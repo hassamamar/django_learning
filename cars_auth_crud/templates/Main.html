@@ -1,0 +1,120 @@
+<!DOCTYPE html>   
+<html lang="en">   
+<head>  
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    
+    <title> Login Page </title>  
+   <style>
+    body {
+        font-family: 'Arial', sans-serif;
+        background-color: #f4f4f4; /* Light gray background */
+        margin: 0;
+        padding: 0;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        height: 100vh;
+    }
+    body div{
+        display: flex;
+        flex-direction: column;
+    }
+
+    .container {
+        background: wheat; /* White background for the form container */
+        border-radius: 8px;
+        box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* Subtle shadow */
+        padding: 20px;
+        width: 100%;
+        max-width: 400px; /* Max width of the form */
+        box-sizing: border-box;
+    }
+    
+            a {
+            color: #007bff; /* Primary link color */
+            text-decoration: none; /* Remove underline */
+            transition: color 0.3s; /* Smooth color transition */
+                font-weight: bold;
+        }
+
+        a:hover, a:focus {
+            color: #0056b3; /* Darker color on hover/focus */
+            text-decoration: underline; /* Underline on hover/focus */
+        }
+
+        a:active {
+            color: #003d7a; /* Even darker color when clicked */
+        }
+
+    h2 {
+        margin-top: 0;
+        color: #333; /* Dark text color */
+        text-align: center;
+    }
+
+    button {
+        background-color: #4CAF50; /* Green background */
+        color: #fff; /* White text color */
+        border: none;
+        border-radius: 4px;
+        padding: 14px 20px;
+        margin: 10px 0;
+        width: 100%;
+        cursor: pointer;
+        font-size: 16px;
+        transition: background-color 0.3s ease, transform 0.2s ease;
+    }
+
+    button:hover {
+        background-color: #45a049; /* Darker green on hover */
+        transform: scale(1.02); /* Slight zoom effect */
+    }
+
+    button:active {
+        transform: scale(0.98); /* Slight shrink effect when clicked */
+    }
+
+    input[type=text], input[type=password] {
+        width: 100%;
+        padding: 14px 16px;
+        margin: 8px 0;
+        border: 1px solid #ddd; /* Light gray border */
+        border-radius: 4px;
+        box-sizing: border-box;
+        font-size: 16px;
+        transition: border-color 0.3s ease;
+    }
+
+    input[type=text]:focus, input[type=password]:focus {
+        border-color: #4CAF50; /* Green border on focus */
+        outline: none;
+    }
+
+    .delete-button {
+        display: inline-block;
+        background: none;
+        color: #007bff; /* Blue color */
+        text-decoration: none;
+        font-size: 16px;
+        cursor: pointer;
+        border: none;
+        padding: 0;
+        margin: 0;
+        font: inherit;
+        transition: color 0.3s ease;
+    }
+
+    .delete-button:hover {
+        color: #0056b3; /* Darker blue on hover */
+    }
+
+    .delete-button:focus {
+        outline: none; /* Remove focus outline */
+    }
+</style>
+</head>    
+<body>    
+<div>{% block content %}{% endblock %}</div>
+
+</body>     
+</html>  

@@ -1,0 +1,35 @@
+{% block car-list %}<div >
+
+
+<br/>
+    <form method="get" action="{% url 'cars' %}">
+     <label>
+         search :
+         {% if request.GET.maker %}<input type="hidden" value="{{ request.GET.maker }}" name="maker" placeholder="search">{% endif %}
+         <input type="text" {% if request.GET.search %} value="{{ request.GET.search }}" {% endif %} name="search" placeholder="search">
+     </label>
+            <button type="submit">search</button>
+    </form>
+<ul style="display: flex;flex-direction: column;gap: 10px">
+
+ 
+
+{% if cars %}
+    {% for car in cars %}
+    <li class="container">owner : {{  car.owner }} ---- 
+       
+    <br/>id : {{ car.id }}
+        <br/> car_model : {{ car.car_model }}<br/> mileage : {{ car.mileage }} <br/> maker : {{ car.maker.name }} 
+        <br>comments : "{{ car.comments }}"<br/>
+     {% if car.owner.username == user.username %}
+        <a href="{% url 'update-car' pk=car.id %}">update</a> / <a href="{% url 'delete-car' pk=car.id %}">delete</a>
+        {% endif %}
+    </li>
+    {% endfor %}
+{% else %}
+    <span>no cars found</span>
+{% endif %}
+</ul>
+    <span><a href="{% url 'create-car' %}">Add car </a> ---- <a href="{% url 'makers' %}">View makers</a></span>
+</div>
+{% endblock %}

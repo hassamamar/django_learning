@@ -1,0 +1,37 @@
+{% extends "Main.html" %}
+{% block content %}
+
+ 
+    <form method="post" action="{% url 'logout' %}">  
+        <div class="container">   
+            {% csrf_token %}
+            <button type="submit">Logout</button> 
+            <input type="hidden" name="next" value="{{ next }}" />
+        </div>   
+    </form>
+    <br/><span><strong style="display: inline-block">user</strong> : {{ user }}</span>
+    <div style="text-align: center;"><h1> View Makers </h1></div>
+<div STYLE="
+        padding: 15px; /* Increased padding for better spacing */
+        border: 1px solid #ddd; /* Light gray border for a softer look */
+        border-radius: 4px; /* Rounded corners for a modern look */
+        background-color: #fff; /* White background for clarity */
+        box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1); /* Subtle shadow for depth */
+        transition: background-color 0.3s ease, box-shadow 0.3s ease; /* Smooth transitions */"> 
+    <ul style="display: flex;flex-direction: column;gap: 10px">
+
+{% if makers %}
+    {% for maker in makers %}
+    <li class="container">{{ maker.name }}
+       <a href="{% url 'delete-maker' name=maker.name %}">delete</a>
+    </li>
+    {% endfor %}
+{% else %}
+    <span>there are no makers</span>
+{% endif %}
+</ul>
+ <span><a href="{% url 'create-maker' %}">Add maker </a> --- <a href="{% url 'cars' %}">View cars</a></span>
+</div>
+   
+   
+{% endblock %}

@@ -1,0 +1,22 @@
+{% extends "Main.html" %} 
+{% block content %}
+{% if user.is_authenticated %}
+    <script>
+        {% if next %}  window.location.href="{{ next }}" {% else %}
+            window.location.href="/" 
+        {% endif %}
+    </script>
+{% else %}
+    <div style="text-align: center;"> <h1> Login </h1> </div>   
+    <form method="post" action="{% url 'login' %}">  
+        <div class="container">   
+            {% csrf_token %}
+            {{ form.as_p }}
+            <br/> <span><strong style="display: inline-block">Don't have an account ? </strong> <a href="{% url 'register' %}?next={{ request.GET.next }}">Register</a></span>
+            <button type="submit" style="font-weight: 600;font-size: 18px">Login</button> 
+            <input type="hidden" name="next" value="{{ next }}" />
+        </div>   
+    </form>
+    
+{%  endif %} 
+{% endblock %}

@@ -1,0 +1,11 @@
+{% block car-filter-maker %}
+    <div>
+    <h1 style="text-align: center;"> Makers </h1>
+<ul >
+
+<li><a href="{% url 'cars' %}">all</a></li>
+    {% for maker in makers %}
+    <li><a href="{% url 'cars' %}?maker={{ maker.name }}{% if request.GET.search %}&search={{ request.GET.search }}{% endif %}">{{ maker.name }}</a></li>
+    {% endfor %}
+</ul></div>
+{% endblock %}

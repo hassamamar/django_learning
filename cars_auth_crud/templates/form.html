@@ -1,0 +1,17 @@
+{% extends "Main.html" %}
+{% block content %}
+    {% if errors %}
+        <p>{{ errors }}</p>
+    {% endif %}
+  <form action="" method="post">
+    {% csrf_token %}
+      <h1>{{ title }}</h1>
+    <table>
+    {{ form.as_table }}
+    </table>
+    <input type="submit" value="{{ action }}">
+    <input type="button"
+    onclick="window.location='{% url link %}' ; return false;"
+    value="Cancel">
+  </form>
+{% endblock %}

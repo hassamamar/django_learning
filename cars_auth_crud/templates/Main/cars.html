@@ -1,0 +1,44 @@
+{% extends "Main.html" %}
+{% block content %}
+    <style>
+    #car-list-container {
+        display: flex;
+        flex-direction: row;
+        gap: 10px;
+        flex-wrap: wrap; /* Allows wrapping to new lines if space is insufficient */
+        padding: 10px; /* Adds padding around the entire container */
+    }
+
+    #car-list-container div {
+        padding: 15px; /* Increased padding for better spacing */
+        border: 1px solid #ddd; /* Light gray border for a softer look */
+        border-radius: 4px; /* Rounded corners for a modern look */
+        background-color: #fff; /* White background for clarity */
+        box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1); /* Subtle shadow for depth */
+        transition: background-color 0.3s ease, box-shadow 0.3s ease; /* Smooth transitions */
+    }
+
+    #car-list-container div:hover {
+        background-color: #f9f9f9; /* Light gray background on hover */
+        box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2); /* Slightly larger shadow on hover */
+    }
+
+    #car-list-container div:last-child {
+        border-right: none; /* No border on the last child */
+    }
+</style>
+     <form method="post" action="{% url 'logout' %}">  
+        <div class="container">   
+            {% csrf_token %}
+            <button type="submit">Logout</button> 
+            <input type="hidden" name="next" value="{{ next }}" />
+        </div>   
+    </form>
+    <br/>
+user : {{ user }}<br/>
+    <h1 style="text-align: center;"> View cars </h1>
+    <div id="car-list-container">
+    {% include "Main/cars-filter-maker.html" %}
+    {% include "Main/cars-list.html" %}
+    </div>
+{% endblock %}
